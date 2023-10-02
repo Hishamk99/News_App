@@ -26,13 +26,22 @@ class HomePage extends StatelessWidget {
         ),
         body: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child:  Column(
-            children: [
-              CategoriesListView(),
-              SizedBox(height: 32,),
-              NewsListView(),
+          child: CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(child: CategoriesListView()),
+              SliverToBoxAdapter(child : SizedBox(height: 32,),),
+              SliverToBoxAdapter(child : NewsListView()),
             ],
+
           ),
+          // child:  Column(
+          //   children: [
+          //     CategoriesListView(),
+          //     SizedBox(height: 32,),
+          //    Expanded(child: NewsListView()),
+          //   ],
+          // ),
         ),
       ),
     );
