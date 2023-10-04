@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/article_model.dart';
 
 class NewsTile extends StatelessWidget {
-  const NewsTile({super.key});
-
+  const NewsTile({super.key , required this.article});
+  final ArticleModel article;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,20 +13,20 @@ class NewsTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
-            child: Image.network(
-              'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
+            child: article.image != null ? Image.network(
+              article.image!,
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
-            ),
+            ): const Text('Theres no image'),
           ),
           const SizedBox(
             height: 12,
           ),
-          const Text(
-            'bqwlfuwfnkjfdnkanvkanvknbksnknfksjlsdm',
+          Text(
+            article.title,
             overflow: TextOverflow.ellipsis,
-            style:  TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w200,
               color: Colors.black,
@@ -34,10 +35,10 @@ class NewsTile extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          const Text(
-            'bqwlfuwfnkjfdnkanvkansefkoJGOFJAS;;F;IsjfdoijsdjdshfdYTSDUSAv',
+          Text(
+            article.subTitle ?? '',
             maxLines: 2,
-            style:  TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w200,
               color: Colors.grey,
