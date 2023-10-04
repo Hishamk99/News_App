@@ -6,7 +6,7 @@ class NewsService {
   final Dio dio;
   NewsService(this.dio);
 
-  void getNews() async {
+  Future<List<ArticleModel>> getNews() async {
     Response response = await dio.get(
         'https://newsapi.org/v2/top-headlines?country=us&apiKey=9c80b0f865784b458b6f6545e07de057');
 
@@ -21,10 +21,9 @@ class NewsService {
         image: article['urlToImage'],
         subTitle: article['description'],
         title: article['title'],
-        source: Source(
-            id: article['source']['id'], name: article['source']['name']),
       );
       articlesList.add(articleModel);
     }
+    return articlesList;
   }
 }
