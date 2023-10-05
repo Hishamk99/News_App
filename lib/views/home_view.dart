@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/categories_list_view.dart';
-import 'package:news_app/widgets/news_list_view.dart';
+import 'package:news_app/widgets/news_list_view_builder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         body: const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
             physics: BouncingScrollPhysics(),
             slivers: [
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                   height: 32,
                 ),
               ),
-              NewsListView(),
+              NewsListViewBuilder(),
             ],
           ),
           // child:  Column(
